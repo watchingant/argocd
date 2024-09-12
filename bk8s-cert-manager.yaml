@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bk8s-cert-manager
+  namespace: argocd
+spec:
+  destination:
+    namespace: cert-manager
+    server: https://10.193.15.223:6443
+  project: default
+  source:
+    chart: cert-manager
+    helm:
+      parameters:
+      - name: installCRDs
+        value: "true"
+      - name: webhook.hostNetwork
+        value: "true"
+      - name: webhook.securePort
+        value: "10252"
+    repoURL: https://charts.jetstack.io
+    targetRevision: v1.15.3
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true

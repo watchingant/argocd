@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: uk8s-cert-manager
+  namespace: argocd
+operation:
+  initiatedBy:
+    automated: true
+  retry:
+    limit: 5
+  sync:
+    revision: v1.15.3
+    syncOptions:
+    - CreateNamespace=true
+spec:
+  destination:
+    namespace: cert-manager
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: cert-manager
+    helm:
+      parameters:
+      - name: installCRDs
+        value: "true"
+      - name: webhook.hostNetwork
+        value: "true"
+      - name: webhook.securePort
+        value: "10252"
+    repoURL: https://charts.jetstack.io
+    targetRevision: v1.15.3
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
