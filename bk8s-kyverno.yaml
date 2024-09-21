@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bk8s-kyverno
+  namespace: argocd
+spec:
+  destination:
+    namespace: kyverno
+    server: https://10.193.15.223:6443
+  project: default
+  source:
+    chart: kyverno
+    helm:
+      parameters:
+      - name: admissionController.hostNetwork
+        value: "true"
+      - name: backgroundController.hostNetwork
+        value: "true"
+      - name: cleanupController.hostNetwork
+        value: "true"
+      - name: reportsController.hostNetwork
+        value: "true"
+    repoURL: https://kyverno.github.io/kyverno
+    targetRevision: 3.2.6
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
