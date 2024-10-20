@@ -3,6 +3,15 @@ kind: Application
 metadata:
   name: bk8s-cert-manager
   namespace: argocd
+operation:
+  initiatedBy:
+    automated: true
+  retry:
+    limit: 5
+  sync:
+    revision: v1.15.3
+    syncOptions:
+    - CreateNamespace=true
 spec:
   destination:
     namespace: cert-manager
