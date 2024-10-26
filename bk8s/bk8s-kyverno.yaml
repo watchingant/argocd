@@ -6,7 +6,7 @@ metadata:
 spec:
   destination:
     namespace: kyverno
-    server: https://10.193.15.223:6443
+    name: bk8s
   project: default
   source:
     chart: kyverno
