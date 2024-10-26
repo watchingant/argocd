@@ -10,7 +10,7 @@ spec:
     targetRevision: main  
     path: uk8s
   destination:
-    server: https://10.193.15.223:6443
+    server: https://kubernetes.default.svc
     namespace: argocd
   syncPolicy:
     automated:  # Auto-sync to automatically apply changes when detected
