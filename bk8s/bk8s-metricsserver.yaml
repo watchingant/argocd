@@ -31,3 +31,4 @@ spec:
     automated: {}
     syncOptions:
     - CreateNamespace=true
+      ServerSideApply=true

@@ -19,3 +19,7 @@ spec:
   destination:
     server: https://10.193.15.223:6443
     namespace: longhorn-system
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+      ServerSideApply=true
