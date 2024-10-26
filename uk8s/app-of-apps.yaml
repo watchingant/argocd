@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: uk8s-app-of-apps
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/watchingant/argocd.git
+    targetRevision: main  
+    path: uk8s
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:  # Auto-sync to automatically apply changes when detected
+      prune: false
+      selfHeal: true
+
