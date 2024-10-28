@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bk8s-ingress-nginx
+  namespace: argocd
+spec:
+  destination:
+    namespace: monitoring
+    name: bk8s
+  project: default
+  source:
+    chart: nginx/ingress-nginx
+    helm:
+      parameters:
+      - name: hostNetwork.enabled
+        value: "true"
+      - name: containerPort
+        value: "10254"
+      - name: controller.service.type
+        value: LoadBalancer
+    repoURL: https://kubernetes.github.io/ingress-nginx
+    targetRevision: 4.11.3
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
+      ServerSideApply=true
