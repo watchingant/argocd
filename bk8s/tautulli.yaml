@@ -10,10 +10,12 @@ spec:
     targetRevision: main  
     path: bk8s/tautulli
   destination:
-    server: https://kubernetes.default.svc
+    server: bk8s
     namespace: tautulli
   syncPolicy:
     automated:  # Auto-sync to automatically apply changes when detected
       prune: false
       selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
 
