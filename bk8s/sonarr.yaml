@@ -10,10 +10,12 @@ spec:
     targetRevision: main  
     path: bk8s/sonarr
   destination:
-    server: https://kubernetes.default.svc
+    server: bk8s
     namespace: sonarr
   syncPolicy:
     automated:  # Auto-sync to automatically apply changes when detected
       prune: false
       selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
 
