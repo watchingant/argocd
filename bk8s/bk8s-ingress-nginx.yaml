@@ -9,7 +9,7 @@ spec:
     name: bk8s
   project: default
   source:
-    chart: nginx/ingress-nginx
+    chart: ingress-nginx
     helm:
       parameters:
       - name: hostNetwork.enabled
