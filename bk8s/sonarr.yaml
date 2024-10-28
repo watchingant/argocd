@@ -11,7 +11,7 @@ spec:
     path: bk8s/sonarr
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: sonarr
   syncPolicy:
     automated:  # Auto-sync to automatically apply changes when detected
       prune: false
