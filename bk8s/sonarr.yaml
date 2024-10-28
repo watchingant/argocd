@@ -10,7 +10,7 @@ spec:
     targetRevision: main  
     path: bk8s/sonarr
   destination:
-    server: bk8s
+    name: bk8s
     namespace: sonarr
   syncPolicy:
     automated:  # Auto-sync to automatically apply changes when detected
