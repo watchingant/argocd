@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bk8s-tautulli
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/watchingant/argocd.git
+    targetRevision: main  
+    path: bk8s/tautulli
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:  # Auto-sync to automatically apply changes when detected
+      prune: false
+      selfHeal: true
+
