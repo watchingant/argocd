@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: monitoring
+    namespace: ingress-nginx
     name: bk8s
   project: default
   source:
@@ -19,7 +19,7 @@ spec:
       - name: controller.service.type
         value: LoadBalancer
     repoURL: https://kubernetes.github.io/ingress-nginx
-    targetRevision: 4.11.3
+    targetRevision: 4.9.1
   syncPolicy:
     automated: {}
     syncOptions:
