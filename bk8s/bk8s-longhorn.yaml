@@ -6,8 +6,7 @@ metadata:
 spec:
   syncPolicy:
     syncOptions:
-      - CreateNamespace=true
-        ServerSideApply=true
+      - CreateNamespace=true ServerSideApply=true
   project: default
   sources:
     - chart: longhorn
